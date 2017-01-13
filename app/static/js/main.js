@@ -1,3 +1,0 @@
-function ClearTxt(){
-   location.reload();
-}
