@@ -26,7 +26,7 @@ def CheckDoc(mod,tes):
     while (i <= len_1):
         try:
             if mod[i] != tes[i]:
-                codemessage = "模版为" + mod[i] + ",实际为" + tes[i]
+                codemessage = "模版为——" + mod[i] + "\n实际为——" + tes[i]
                 break
             else:
                 i += 1
