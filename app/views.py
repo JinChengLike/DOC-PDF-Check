@@ -1,7 +1,7 @@
 #coding=utf-8
 from app import app
 import os
-from flask import render_template,request,session,redirect,url_for
+from flask import render_template
 from app import model
 from flask_uploads import UploadSet, DOCUMENTS,UploadConfiguration
 from app import PdfHandle
@@ -24,9 +24,10 @@ def index():
                 mo_name = DocHadnle.readDocx('instance/flies/modelfile.doc')
                 tes_name = DocHadnle.readDocx('instance/flies/testfile.doc')
                 aaa = DocHadnle.CheckDoc(mo_name,tes_name)
-                return aaa
+                return render_template('index.html', form=form, res=aaa)
             else:
-                return "请上传相同格式文件"
+                res = "请上传相同格式文件"
+                return render_template('index.html', form=form, res=res)
         if ".pdf" in mo_f.filename:
             mo_f.save(os.path.join(app.instance_path, 'flies', 'modelfile.pdf'))
             if ".pdf" in che_f.filename:
@@ -34,11 +35,15 @@ def index():
                 mo_name = PdfHandle.handle_pdf('instance/flies/modelfile.pdf')
                 tes_name = PdfHandle.handle_pdf('instance/flies/testfile.pdf')
                 aaa = PdfHandle.Check_PDF(mo_name, tes_name)
-                return aaa
+                return render_template('index.html', form=form, res=aaa)
             else:
-                return "请上传相同格式文件"
+                res= "请上传相同格式文件"
+                return render_template('index.html', form=form, res=res)
         else:
-            return "请上传Doc文件或PDF文件"
+            res= "请上传Doc文件或PDF文件"
+            return render_template('index.html', form=form, res=res)
     else:
-        return render_template('index.html', form=form)
+        res = "检查结果再此显示"
+        return render_template('index.html', form=form, res=res)
+
 

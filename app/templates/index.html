@@ -3,40 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>TextCheck</title>
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="/static/css/index.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="/static/js/main.js"></script>
 </head>
 <body>
-<h1 align="center">QA协议检查工具</h1>
-<div>
-    <div class="content-l">
-        <form method="post" enctype="multipart/form-data">
-            <div>
-                <a>上传协议样本文件</a>
-            </div>
-            {{ form.hidden_tag() }}
-            {{ form.csrf_token }}
-            {{ form.model_file }}
-            <div>
-                <a>上传协议检查文件</a>
-            </div>
-            {{ form.check_file}}
-            {{ form.submit() }}　　　
-        </form>
-
-
-        <div class="file-btn">
-            <button type="button" onclick="ClearTxt()">clear</button>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">QA协议检查工具</a>
         </div>
-
     </div>
-    <div class="content">
-        <div class="text-l">
-            <pre id="ShowCase"></pre>
-
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="content-l .col-md-6">
+            {% import "bootstrap/wtf.html" as wtf %}
+            {{ wtf.quick_form(form) }}
         </div>
-        <div class="text-r">
-            <pre id="ShowRes"></pre>
+
+
+        <div class=".col-md-4">
+            <div class="text-l">
+                <pre id="ShowCase">
+                    <p align="center">{{res}}</p>
+                </pre>
+            </div>
         </div>
     </div>
 </div>

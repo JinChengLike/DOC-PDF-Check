@@ -17,13 +17,12 @@ a{
 
 .content-l{
     float: left;
-    width: 12%;
     height: 100%;
 }
 
 .text-l{
     float: left;
-    width:40%;
+    width:60%;
 }
 .text-r{
     float: right;
