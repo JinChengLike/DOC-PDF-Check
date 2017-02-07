@@ -28,5 +28,3 @@ def db_insert(id, name, result, test):
     cursor.close()
     conn.close()
 
-#if __name__ == '__main__':
- #   db_insert(1, "jin", "大家啊说法","jin.doc")
