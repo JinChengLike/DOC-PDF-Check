@@ -13,21 +13,37 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#">QA协议检查工具</a>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+
+        </ul>
     </div>
 </nav>
 <div class="container">
     <div class="row">
-        <div class="content-l col-md-6">
+        <div class="content-l col-md-5">
             {% import "bootstrap/wtf.html" as wtf %}
             {{ wtf.quick_form(form) }}
         </div>
 
 
-        <div class="col-md-4">
+        <div class="col-md-7">
             <div class="text-l">
-                <pre id="ShowCase">
-                    <p>{{res}}</p>
-                </pre>
+                <div class = "show">
+                    <pre id="ShowCase">
+                        <p>{{res}}</p>
+                    </pre>
+                </div>
+
+                <div>
+                    {% if his %}
+                    <h4>历史记录</h4>
+                        <ul>
+                            {% for his in his %}
+                            <li>{{ his }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

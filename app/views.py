@@ -48,7 +48,7 @@ def index():
             res = "请上传Doc文件或PDF文件"
             return render_template('index.html', form=form, res=res)
     else:
-        res = "检查结果再此显示"
-        return render_template('index.html', form=form, res=res)
+        his = db_model.db_select_history()
+        return render_template('index.html', form=form, his=his)
 
 

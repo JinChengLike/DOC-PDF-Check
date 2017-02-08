@@ -32,19 +32,24 @@ a{
 
 .text-l{
     float: left;
-    width:60%;
 }
 .text-r{
     float: right;
     width:40%;
 }
 
+.show{
+    height:400px;
+}
 pre{
     width: 350px;
+    height: 350px;
     white-space: pre-wrap; /* css-3 */
     white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
     white-space: -pre-wrap; /* Opera 4-6 */
     white-space: -o-pre-wrap; /* Opera 7 */
     word-wrap: break-word; /* Internet Explorer 5.5+ */
     overflow: auto;
+    background-color: white;
+    border-width: 10px;
 }
