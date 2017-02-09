@@ -31,9 +31,15 @@ class FileHandle():
             mo_name = PdfHandle.handle_pdf('instance/flies/modelfile.pdf')
             tes_name = PdfHandle.handle_pdf('instance/flies/testfile.pdf')
             res_mo, res_tes = PdfHandle.Check_PDF(mo_name, tes_name)
+            if os.path.exists('instance/flies/modelfile.pdf'):
+                 os.remove('instance/flies/modelfile.pdf')
+                 os.remove('instance/flies/testfile.pdf')
             return res_mo, res_tes
         else:
             mo_name = DocHadnle.readDocx('instance/flies/modelfile.doc')
             tes_name = DocHadnle.readDocx('instance/flies/testfile.doc')
             res_mo, res_tes = DocHadnle.CheckDoc(mo_name, tes_name)
+            if os.path.exists('instance/flies/modelfile.doc'):
+                 os.remove('instance/flies/modelfile.doc')
+                 os.remove('instance/flies/testfile.doc')
             return res_mo, res_tes
