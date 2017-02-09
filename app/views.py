@@ -1,12 +1,10 @@
 #coding=utf-8
 from app import app
-import os
 from flask import render_template
 from app import model
 from flask_uploads import UploadSet, DOCUMENTS,UploadConfiguration
-from app import PdfHandle
-from app import DocHadnle
 from app import db_model
+from FileHandle import FileHandle
 
 files_get = UploadSet('files', DOCUMENTS)
 UploadConfiguration(app, files_get)
@@ -20,30 +18,15 @@ def index():
         che_f = form.check_file.data
         name = form.name.data
         id = form.id.data
-        if ".pdf" in mo_f.filename:
-            mo_f.save(os.path.join(app.instance_path, 'flies', 'modelfile.pdf'))
-            if ".pdf" in  che_f.filename:
-                che_f.save(os.path.join(app.instance_path, 'flies', 'testfile.pdf'))
-                mo_name = PdfHandle.handle_pdf('instance/flies/modelfile.pdf')
-                tes_name = PdfHandle.handle_pdf('instance/flies/testfile.pdf')
-                res_mo, res_tes = PdfHandle.Check_PDF(mo_name, tes_name)
-                db_model.db_insert(id, name, res_mo, res_tes, che_f.filename)
-                return render_template('index.html', form=form, res_mo=res_mo, res_tes=res_tes)
-            else:
-                res = "请上传相同格式文件"
-                return render_template('index.html', form=form, res_mo=res, res_tes=res)
-        if ".doc" or ".docx" in mo_f.filename:
-            mo_f.save(os.path.join(app.instance_path, 'flies', 'modelfile.doc'))
-            if ".doc" or ".docx" in che_f.filename:
-                che_f.save(os.path.join(app.instance_path, 'flies', 'testfile.doc'))
-                mo_name = DocHadnle.readDocx('instance/flies/modelfile.doc')
-                tes_name = DocHadnle.readDocx('instance/flies/testfile.doc')
-                res_mo, res_tes = DocHadnle.CheckDoc(mo_name, tes_name)
-                db_model.db_insert(id, name, res_mo, res_tes, che_f.filename)
-                return render_template('index.html', form=form, res_mo=res_mo, res_tes=res_tes)
-            else:
-                res = "请上传相同格式文件"
-                return render_template('index.html', form=form, res_mo=res, res_tes=res)
+        f = FileHandle(mo_f, che_f)
+        save_res = f.SaveFile()
+        if not save_res:
+            res = "请上传相同格式文件"
+            return render_template('index.html', form=form, res_mo=res, res_tes=res)
+        elif save_res:
+            res_mo, res_tes = f.CheckFile()
+            db_model.db_insert(id, name, res_mo, res_tes, che_f.filename)
+            return render_template('index.html', form=form, res_mo=res_mo, res_tes=res_tes)
     else:
         his = db_model.db_select_history()
         return render_template('index.html', form=form, his=his)
