@@ -52,13 +52,9 @@ def db_select_history():
     i = 0
     while(i < his_num):
         his_str = rs[i][5] + ' ' + rs[i][2] + ' 检查了 ' + rs[i][6]
-    #    his_str = his_str.encode("utf-8")
         his.append(his_str)
         i += 1
     cursor.close()
     conn.close()
     return his
 
-#if __name__ == "__main__":
-#    a = db_insert(223,'jincheng','金发','经发生的','jin.doc')
-#    print a

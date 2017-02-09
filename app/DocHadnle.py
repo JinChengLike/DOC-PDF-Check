@@ -27,7 +27,6 @@ def CheckDoc(mod,tes):
         try:
             if mod[i] != tes[i]:
                 return mod[i],tes[i]
-                #codemessage = "模版为——" + mod[i] + "\n实际为——" + tes[i]
             else:
                 i += 1
         except IndexError:
@@ -38,7 +37,3 @@ def CheckDoc(mod,tes):
         codemessage = "文件无错误"
     return codemessage,codemessage
 
-# if __name__ == '__main__':
-#     aa = readDocx('../instance/flies/modelfile.doc')
-#     bb = readDocx('../instance/flies/testfile.doc')
-#     print aa[11]
