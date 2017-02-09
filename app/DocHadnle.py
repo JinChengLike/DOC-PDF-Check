@@ -26,8 +26,8 @@ def CheckDoc(mod,tes):
     while (i <= len_1):
         try:
             if mod[i] != tes[i]:
-                codemessage = "模版为——" + mod[i] + "\n实际为——" + tes[i]
-                break
+                return mod[i],tes[i]
+                #codemessage = "模版为——" + mod[i] + "\n实际为——" + tes[i]
             else:
                 i += 1
         except IndexError:
@@ -36,7 +36,7 @@ def CheckDoc(mod,tes):
             break
     if "模版为" and "实际为" not in codemessage:
         codemessage = "文件无错误"
-    return codemessage
+    return codemessage,codemessage
 
 # if __name__ == '__main__':
 #     aa = readDocx('../instance/flies/modelfile.doc')

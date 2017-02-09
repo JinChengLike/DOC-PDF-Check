@@ -26,27 +26,27 @@ def index():
                 che_f.save(os.path.join(app.instance_path, 'flies', 'testfile.doc'))
                 mo_name = DocHadnle.readDocx('instance/flies/modelfile.doc')
                 tes_name = DocHadnle.readDocx('instance/flies/testfile.doc')
-                res = DocHadnle.CheckDoc(mo_name, tes_name)
-                db_model.db_insert(id, name, res, che_f.filename)
-                return render_template('index.html', form=form, res=res)
+                res_mo, res_tes = DocHadnle.CheckDoc(mo_name, tes_name)
+                db_model.db_insert(id, name, res_mo, res_tes, che_f.filename)
+                return render_template('index.html', form=form, res_mo=res_mo, res_tes=res_tes)
             else:
                 res = "请上传相同格式文件"
-                return render_template('index.html', form=form, res=res)
+                return render_template('index.html', form=form, res_mo=res, res_tes=res)
         if ".pdf" in mo_f.filename:
             mo_f.save(os.path.join(app.instance_path, 'flies', 'modelfile.pdf'))
             if ".pdf" in che_f.filename:
                 che_f.save(os.path.join(app.instance_path, 'flies', 'testfile.pdf'))
                 mo_name = PdfHandle.handle_pdf('instance/flies/modelfile.pdf')
                 tes_name = PdfHandle.handle_pdf('instance/flies/testfile.pdf')
-                res = PdfHandle.Check_PDF(mo_name, tes_name)
-                db_model.db_insert(id, name, res, che_f.filename)
-                return render_template('index.html', form=form, res=res)
+                res_mo, res_tes = PdfHandle.Check_PDF(mo_name, tes_name)
+                db_model.db_insert(id, name, res_mo, res_tes, che_f.filename)
+                return render_template('index.html', form=form, res_mo=res_mo, res_tes=res_tes)
             else:
                 res = "请上传相同格式文件"
-                return render_template('index.html', form=form, res=res)
+                return render_template('index.html', form=form, res_mo=res, res_tes=res)
         else:
             res = "请上传Doc文件或PDF文件"
-            return render_template('index.html', form=form, res=res)
+            return render_template('index.html', form=form, res_mo=res, res_tes=res)
     else:
         his = db_model.db_select_history()
         return render_template('index.html', form=form, his=his)

@@ -39,11 +39,11 @@ a{
 }
 
 .show{
-    height:400px;
+    height:200px;
 }
 pre{
     width: 350px;
-    height: 350px;
+    height: 200px;
     white-space: pre-wrap; /* css-3 */
     white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
     white-space: -pre-wrap; /* Opera 4-6 */
@@ -51,5 +51,5 @@ pre{
     word-wrap: break-word; /* Internet Explorer 5.5+ */
     overflow: auto;
     background-color: white;
-    border-width: 10px;
+    border-width: 5px;
 }

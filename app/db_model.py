@@ -7,7 +7,7 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 
-def db_insert(id, name, result, test):
+def db_insert(id, name, result, result_tes, test):
     conn = MySQLdb.connect(
         host="127.0.0.1",
         port=3306,
@@ -22,7 +22,8 @@ def db_insert(id, name, result, test):
     name = name
     result = result
     test = test
-    sql = "INSERT INTO text_check (id, name, result, datatime, test) VALUES (" + id + ", '" + name + "', '" + result + "', '" + datatime + "', '" + test + "');"
+    sql = "INSERT INTO text_check (id, name, result, result_tes, datatime, test) VALUES ("
+    sql = sql + id + ", '" + name + "', '" + result + "', '" + result_tes + "', '" + datatime + "', '" + test + "');"
     try:
         cursor.execute(sql)
         conn.commit()
@@ -50,7 +51,7 @@ def db_select_history():
     his = []
     i = 0
     while(i < his_num):
-        his_str = rs[i][4] + ' ' + rs[i][2] + ' 检查了 ' + rs[i][5]
+        his_str = rs[i][5] + ' ' + rs[i][2] + ' 检查了 ' + rs[i][6]
     #    his_str = his_str.encode("utf-8")
         his.append(his_str)
         i += 1
@@ -58,6 +59,6 @@ def db_select_history():
     conn.close()
     return his
 
-if __name__ == "__main__":
-    a = db_select_history()
-    print a
+#if __name__ == "__main__":
+#    a = db_insert(223,'jincheng','金发','经发生的','jin.doc')
+#    print a
