@@ -63,8 +63,3 @@ def Check_PDF(mo_name, tes_name):
     return codemessage,codemessage
 
 
-# if __name__ == '__main__':
-#
-#     mo_name = handle_pdf('../instance/flies/modelfile.pdf')
-#     tes_name = handle_pdf('../instance/flies/testfile.pdf')
-#     aaa = Check_PDF(mo_name, tes_name)
