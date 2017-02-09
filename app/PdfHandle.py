@@ -51,8 +51,7 @@ def Check_PDF(mo_name, tes_name):
     while(i <= len_1):
         try:
             if mo_file[i] != tes_file[i]:
-                codemessage = "模版为"+mo_file[i]+",实际为"+tes_file[i]
-                break
+                return mo_file[i],tes_file[i]
             else:
                 i += 1
         except IndexError:
@@ -61,7 +60,7 @@ def Check_PDF(mo_name, tes_name):
             break
     if "模版为" and "实际为" not in codemessage:
         codemessage = "文件无错误"
-    return codemessage
+    return codemessage,codemessage
 
 
 # if __name__ == '__main__':
