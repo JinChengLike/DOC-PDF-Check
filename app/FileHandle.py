@@ -19,9 +19,9 @@ class FileHandle():
             else:
                 return False
         else:
-            self.mo_file.save(os.path.join(app.instance_path, 'flies', 'modelfile.doc'))
+            self.mo_file.save(os.path.join(app.instance_path, 'flies', 'modelfile.docx'))
             if ".doc" or ".docx" in self.tes_file.filename:
-                self.tes_file.save(os.path.join(app.instance_path, 'flies', 'testfile.doc'))
+                self.tes_file.save(os.path.join(app.instance_path, 'flies', 'testfile.docx'))
                 return True
             else:
                 return False
@@ -36,10 +36,10 @@ class FileHandle():
                  os.remove('instance/flies/testfile.pdf')
             return res_mo, res_tes
         else:
-            mo_name = DocHadnle.readDocx('instance/flies/modelfile.doc')
-            tes_name = DocHadnle.readDocx('instance/flies/testfile.doc')
+            mo_name = DocHadnle.readDocx('instance/flies/modelfile.docx')
+            tes_name = DocHadnle.readDocx('instance/flies/testfile.docx')
             res_mo, res_tes = DocHadnle.CheckDoc(mo_name, tes_name)
-            if os.path.exists('instance/flies/modelfile.doc'):
-                 os.remove('instance/flies/modelfile.doc')
-                 os.remove('instance/flies/testfile.doc')
+            if os.path.exists('instance/flies/modelfile.docx'):
+                 os.remove('instance/flies/modelfile.docx')
+                 os.remove('instance/flies/testfile.docx')
             return res_mo, res_tes
