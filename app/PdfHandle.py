@@ -39,27 +39,27 @@ def handle_pdf(fliename):
     return a
 
 
-def Check_PDF(mo_name, tes_name):
-    mo_file = mo_name
-    tes_file = tes_name
-    len_1 = len(mo_name)
-    len_2 = len(tes_name)
-    codemessage = ""
-    if len_1 != len_2:
-        codemessage = "文件长度不同，请检查"
-    i =0
-    while(i <= len_1):
-        try:
-            if mo_file[i] != tes_file[i]:
-                return mo_file[i],tes_file[i]
-            else:
-                i += 1
-        except IndexError:
-            continue
-        if i == len_1:
-            break
-    if "模版为" and "实际为" not in codemessage:
-        codemessage = "文件无错误"
-    return codemessage,codemessage
+# def Check_PDF(mo_name, tes_name):
+#     mo_file = mo_name
+#     tes_file = tes_name
+#     len_1 = len(mo_name)
+#     len_2 = len(tes_name)
+#     codemessage = ""
+#     if len_1 != len_2:
+#         codemessage = "文件长度不同，请检查"
+#     i =0
+#     while(i <= len_1):
+#         try:
+#             if mo_file[i] != tes_file[i]:
+#                 return mo_file[i],tes_file[i]
+#             else:
+#                 i += 1
+#         except IndexError:
+#             continue
+#         if i == len_1:
+#             break
+#     if "模版为" and "实际为" not in codemessage:
+#         codemessage = "文件无错误"
+#     return codemessage, codemessage
 
 

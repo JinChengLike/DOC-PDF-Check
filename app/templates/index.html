@@ -20,41 +20,52 @@
 </nav>
 <div class="container">
     <div class="row">
-        <div class="content-l col-md-5">
+        <div class="content-l col-md-3">
             {% import "bootstrap/wtf.html" as wtf %}
             {{ wtf.quick_form(form) }}
+
+            <div style="height:10px;">
+
+            </div>
+            <div>
+                <button type="button" class="btn btn-info btn-sm" style="width:70px;" onclick="CompTxt()">检查</button>
+            </div>
+            <div style="height:50px;">
+
+            </div>
+            <div>
+                {% if his %}
+                <h4>历史记录</h4>
+                <ul>
+                    {% for his in his %}
+                    <li>{{ his }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
         </div>
 
 
-        <div class="col-md-7">
+        <div class="col-md-5">
             <div class="text-l">
                 <div style="height:20px;">
                     <p>模版内容</p>
                 </div>
-                <div class = "show">
-                    <pre id="ShowCase">
-                        <p>{{res_mo}}</p>
-                    </pre>
+                <div class="show">
+                    <pre id="ShowCase">{% for res_mo in res_mo %}
+                            {{res_mo}}
+                            {% endfor %}</pre>
                 </div>
-                <div style="height:20px;">
-                    <p>实际内容</p>
-                </div>
-                <div class = "show">
-                    <pre>
-                        <p>{{res_tes}}</p>
-                    </pre>
-                </div>
-
-                <div>
-                    {% if his %}
-                    <h4>历史记录</h4>
-                        <ul>
-                            {% for his in his %}
-                            <li>{{ his }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
+            </div>
+        </div>
+        <div>
+            <div style="height:20px;">
+                <p>实际内容</p>
+            </div>
+            <div class="show">
+                    <pre id="ShowRes">{% for res_tes in res_tes %}
+                            {{res_tes}}
+                            {% endfor %}</pre>
             </div>
         </div>
     </div>

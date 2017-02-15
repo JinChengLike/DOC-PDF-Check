@@ -28,17 +28,17 @@ class FileHandle():
 
     def CheckFile(self):
         if ".pdf" in self.mo_file.filename:
-            mo_name = PdfHandle.handle_pdf('instance/flies/modelfile.pdf')
-            tes_name = PdfHandle.handle_pdf('instance/flies/testfile.pdf')
-            res_mo, res_tes = PdfHandle.Check_PDF(mo_name, tes_name)
+            res_mo = PdfHandle.handle_pdf('instance/flies/modelfile.pdf')
+            res_tes = PdfHandle.handle_pdf('instance/flies/testfile.pdf')
+            #res_mo, res_tes = PdfHandle.Check_PDF(mo_name, tes_name)
             if os.path.exists('instance/flies/modelfile.pdf'):
                  os.remove('instance/flies/modelfile.pdf')
                  os.remove('instance/flies/testfile.pdf')
             return res_mo, res_tes
         else:
-            mo_name = DocHadnle.readDocx('instance/flies/modelfile.docx')
-            tes_name = DocHadnle.readDocx('instance/flies/testfile.docx')
-            res_mo, res_tes = DocHadnle.CheckDoc(mo_name, tes_name)
+            res_mo = DocHadnle.readDocx('instance/flies/modelfile.docx')
+            res_tes = DocHadnle.readDocx('instance/flies/testfile.docx')
+            #res_mo, res_tes = DocHadnle.CheckDoc(mo_name, tes_name)
             if os.path.exists('instance/flies/modelfile.docx'):
                  os.remove('instance/flies/modelfile.docx')
                  os.remove('instance/flies/testfile.docx')

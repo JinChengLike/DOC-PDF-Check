@@ -2,7 +2,7 @@
 from app import app
 from flask import render_template
 from app import model
-from flask_uploads import UploadSet, DOCUMENTS,UploadConfiguration
+from flask_uploads import UploadSet, DOCUMENTS, UploadConfiguration
 from app import db_model
 from FileHandle import FileHandle
 
@@ -25,7 +25,7 @@ def index():
             return render_template('index.html', form=form, res_mo=res, res_tes=res)
         elif save_res:
             res_mo, res_tes = f.CheckFile()
-            db_model.db_insert(id, name, res_mo, res_tes, che_f.filename)
+            db_model.db_insert(id, name, che_f.filename)
             return render_template('index.html', form=form, res_mo=res_mo, res_tes=res_tes)
     else:
         his = db_model.db_select_history()
