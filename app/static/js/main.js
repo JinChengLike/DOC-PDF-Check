@@ -5,6 +5,7 @@ function ClearTxt(){
 
 function HandleCaseTxt(){
    var CaseFile = document.getElementById("ShowCase").innerHTML;
+   CaseFile = CaseFile.replace(/。/g, "，")
    var CaseStr = CaseFile.split("，");
    return CaseStr;
 
@@ -12,6 +13,7 @@ function HandleCaseTxt(){
 
 function HandleTestTxt(){
    var TestFile = document.getElementById("ShowRes").innerHTML;
+   TestFile = TestFile.replace(/。/g, "，")
    var TestStr = TestFile.split("，");
    return TestStr;
 }
