@@ -35,7 +35,7 @@ def handle_pdf(fliename):
             if (isinstance(x, LTTextBoxHorizontal)):
                 text = re.sub(replace, '', x.get_text())
                 if len(text) != 0:
-                    a.append(text)
+                    a.append(text.encode('utf8'))
     return a
 
 
@@ -63,3 +63,6 @@ def handle_pdf(fliename):
 #     return codemessage, codemessage
 
 
+# if __name__ == "__main__":
+#     print handle_pdf('../instance/flies/jin.pdf')
+#     #print handle_pdf('../instance/flies/协议2.pdf')
